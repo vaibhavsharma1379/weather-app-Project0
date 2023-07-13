@@ -1,0 +1,42 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "users": [
+    {
+      "name": "Vaibhav Sharma",
+      "email": "jayiy90325@kuvasin.com",
+      "password": "123",
+      "id": 1
+    },
+    {
+      "name": "Vaibhav",
+      "email": "vaibhavsrh766@gmail.com",
+      "password": "12345",
+      "id": 2
+    },
+    {
+      "name": "Vaibhav Sharma",
+      "email": "jayiy9025@kuvasin.com",
+      "password": "8885",
+      "id": 3
+    },
+    {
+      "name": "Vaibhav",
+      "email": "vaibhav.as@krishnacollege.ac.in",
+      "password": "1234",
+      "id": 4
+    }
+  ]
+}

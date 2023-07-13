@@ -1,0 +1,81 @@
+<div ng-include="'header.html'"></div>
+<div>
+
+
+    <style>
+       
+        .containerastro{
+            /* max-width: 800px; */
+           
+            padding: 20px;
+            
+        
+            background-size: 100% 100%;
+            background-size: cover;
+            /* image-resolution: 100%; */
+            width: 100%;
+            height: 100%;
+        }
+        p{
+            
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        h1 {
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        .location-info, .astronomy-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+      
+        .astronomy-info img {
+            max-width: 100%;
+        }
+    </style>
+
+
+    <div  class="containerastro" ng-controller="astronomy" ng-style="backgroungimg">
+        <h1 ng-style="textcolor">Location and Astronomy Information</h1>
+        <div ng-style="textcolor" class="location-info">
+            <div >
+                <h2>LOCATION</h2>
+                <br>
+                <p>Name: {{astronomyarr.location.name}}</p>
+                <p>Region: {{astronomyarr.location.region}}</p>
+                <p>Country: {{astronomyarr.location.country}}</p>
+                <p>Latitude: {{astronomyarr.location.lat}}</p>
+                <p>Longitude: {{astronomyarr.location.lon}}</p>
+            </div>
+            <div>
+                <h2>TIME</h2>
+                <br>
+                <p>Timezone: {{astronomyarr.location.tz_id}}</p>
+                <p>Local Time: {{astronomyarr.location.localtime}}</p>
+            </div>
+        </div>
+        <div ng-style="textcolor" class="astronomy-info">
+            <div>
+                <h2>ASTRONOMY</h2>
+                <br>
+                <p>Sunrise: {{astronomyarr.astronomy.astro.sunrise}}</p>
+                <p>Sunset: {{astronomyarr.astronomy.astro.sunset}}</p>
+                <p>Moonrise: {{astronomyarr.astronomy.astro.moonrise}}</p>
+                <p>Moonset: {{astronomyarr.astronomy.astro.moonset}}</p>
+                <p>Moon Phase: {{astronomyarr.astronomy.astro.moon_phase}}</p>
+                <p>Moon Illumination: {{astronomyarr.astronomy.astro.moon_illumination}}</p>
+            </div>
+
+            <div>
+                <h2>MOON PHASE IMG</h2>
+                <img ng-src="{{myImage}}" alt="Moon Phase Image" style="max-width: 400px;"></div>
+        </div>
+    </div>
+
+
+    <div  ng-include="'footer.html'"></div>
+<div>

@@ -1,0 +1,36 @@
+<div ng-include="'header.html'"></div>
+<div>
+
+    <div style="margin:auto; margin-top: 50px; max-width: 1200px; " ng-controller="sportscntrl">
+        <div  ng-repeat="(matchName,matches) in matchs">
+
+            <h2> {{matchName | uppercase}} Matches</h2>
+
+            <table class="table">
+                <tr class="table-row">
+                    <!-- Table header -->
+                    <th class="table-cell table-header" style="background-color: #8D8C8C;">Stadium</th>
+                    <th class="table-cell table-header" style="background-color: #8D8C8C;">Country</th>
+                    <th class="table-cell table-header" style="background-color: #8D8C8C;">Region</th>
+                    <th class="table-cell table-header" style="background-color: #8D8C8C;">Tournament</th>
+                    <th class="table-cell table-header" style="background-color: #8D8C8C;">Start</th>
+                    <th class="table-cell table-header" style="background-color: #8D8C8C;">Match</th>
+                </tr>
+                <tr class="table-row" ng-repeat="match in matches">
+                    <!-- Table data -->
+                    <td class="table-cell">{{match.stadium}}</td>
+                    <td class="table-cell">{{match.country}}</td>
+                    <td class="table-cell">{{match.region}}</td>
+                    <td class="table-cell">{{match.tournament}}</td>
+                    <td class="table-cell">{{match.start}}</td>
+                    <td class="table-cell">{{match.match}}</td>
+                </tr>
+
+            </table>
+           
+        </div>
+        <div style="height: 100px;"></div>
+    </div>
+
+    <div  ng-include="'footer.html'"></div>
+    <div>

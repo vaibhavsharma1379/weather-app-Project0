@@ -1,0 +1,49 @@
+<div ng-include="'header.html'"></div>
+<div>
+
+
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .card {
+            box-sizing: border-box;
+            flex: 1 0 200px;
+            margin: 5px;
+            max-width: calc(25% - 10px);
+            max-height: 230px;
+            overflow: auto;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+        }
+
+        @media (max-width: 800px) {
+            .card {
+                max-width: calc(50% - 10px);
+            }
+        }
+    </style>
+
+    <h1 style="text-align: center; margin-top: 15px;">TODAYS FACTS</h1>
+    <div class="container" ng-controller="factscntrlr">
+        <!-- Add your card content here -->
+        <!-- Example card -->
+
+        <div class="card" ng-repeat="facts in factslist">
+            <h3>Card Title</h3>
+            <p>{{facts.fact}}</p>
+        </div>
+
+
+
+
+
+
+    </div>
+
+    <div  ng-include="'footer.html'"></div>
+    <div>

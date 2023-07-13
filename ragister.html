@@ -1,0 +1,54 @@
+<div ng-controller="rgtrCtrl">
+    <div class="form" >
+      <div class="form-data">
+          <h6 ng-if="displayPasswordNotMatchedmsg" style="color: red; margin: 5px;">password not matched</h6>
+        <div class="text-field">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter Your Name"
+            ng-model="$parent.name"
+          />
+        </div>
+        <div class="text-field">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter Your Email"
+            ng-model="$parent.email"
+          />
+        </div>
+        <div class="text-field">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter Your Password"
+            ng-model="$parent.password"
+          />
+        </div>
+        <div class="text-field">
+          <label for="confirm-password">Confirm Password</label>
+          <input
+            type="password"
+            id="confirm-password"
+            name="password"
+            placeholder="Confirm Your Password"
+            ng-model="$parent.confirmPassword"
+            
+          />
+        </div>
+      </div>
+      <div class="submit-button">
+        <button  ng-click="ragister()" type="submit" class="button" style="width: 100%">Ragister</button>
+      </div>
+      <div class="account-create">
+        Already have an account?<a ng-href="#/login"> LogIn</a>
+      </div>
+    </div>
+  </div>
