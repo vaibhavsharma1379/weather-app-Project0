@@ -112,7 +112,7 @@ app.controller("rgtrCtrl", ["$scope", "$location", "rgtrService", function (p, $
 
 }])
 
-app.controller("currentwther", ["$scope", "$interval", "currentweatherservice", function (p, $interval, currentweatherservice) {
+app.controller("currentwther", ["$scope", "$interval","$injector", "currentweatherservice", function (p, $interval, injector,currentweatherservice) {
     p.name;
     p.region;
     p.country;
@@ -181,6 +181,12 @@ app.controller("currentwther", ["$scope", "$interval", "currentweatherservice", 
         p.searchWeather(null);
         
     }, 100000);
+
+    // p.myfunction2=function(cityname){
+    //     var asrtronomycntrlr=injector.get('astronomy');
+    //     var astrofunc=asrtronomycntrlr.wea(cityname);
+    //     astrofunc(cityname);
+    // }
 }])
 
 app.controller("hourlyWeather", ["$scope", "$interval", "currentweatherservice", function (p, $interval ,currentweatherservice) {
@@ -232,11 +238,12 @@ app.controller("astronomy",["$scope","$interval","currentweatherservice",functio
     s.backgroungimg;
     s.moonphase;
     s.myImage;
-   var wea=function(){
-    currentweatherservice.currentWthr("/astronomy.json",null,null,function(res){
+    s.cityName;
+    s.wea=function(cityname){
+    currentweatherservice.currentWthr("/astronomy.json",cityname,null,function(res){
         s.astronomyarr=res;
         
-        if(s.astronomyarr.astronomy.astro.is_sun_up==1){
+        if(s.astronomyarr.astronomy.astro.is_moon_up==0){
             s.backgroungimg={
                 "background-image": 'url("./64x64/astronomy/day.jpg")',
             }
@@ -245,7 +252,7 @@ app.controller("astronomy",["$scope","$interval","currentweatherservice",functio
             }
             
         }
-        else{
+        else if(s.astronomyarr.astronomy.astro.is_moon_up==1){
             s.backgroungimg={
                 "background-image": 'url("./64x64/astronomy/night.jpg")',
                 
@@ -278,11 +285,11 @@ app.controller("astronomy",["$scope","$interval","currentweatherservice",functio
         console.log("erer");
     })
    }
-   wea();
-    $interval(function () {
-        wea();
+   s.wea(null);
+    // $interval(function () {
+    //     wea();
         
-    }, 12000);
+    // }, 12000);
 }])
 
 app.controller("sportscntrl",["$scope","currentweatherservice",function(s,currentweatherservice){

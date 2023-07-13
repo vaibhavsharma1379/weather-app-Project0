@@ -1,3 +1,4 @@
+<div ng-controller="astronomy">
 <div ng-include="'header.html'"></div>
 <div>
 
@@ -39,8 +40,13 @@
     </style>
 
 
-    <div  class="containerastro" ng-controller="astronomy" ng-style="backgroungimg">
+    <div  class="containerastro"  ng-style="backgroungimg">
         <h1 ng-style="textcolor">Location and Astronomy Information</h1>
+        <form class="d-flex" role="search" >
+            <input class="form-control me-2" type="search" placeholder="Search Astronomy by City Name" aria-label="Search" ng-model="cityName">
+            <!-- {{cityName}} -->
+            <button class="btn btn-outline-success" type="submit" ng-click="wea(cityName);">Search</button>
+          </form>
         <div ng-style="textcolor" class="location-info">
             <div >
                 <h2>LOCATION</h2>
@@ -78,4 +84,5 @@
 
 
     <div  ng-include="'footer.html'"></div>
-<div>
+</div>
+</div>

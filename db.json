@@ -37,6 +37,12 @@
       "email": "vaibhav.as@krishnacollege.ac.in",
       "password": "1234",
       "id": 4
+    },
+    {
+      "name": "Vaibhav Vaibhavsharma",
+      "email": "vaibhavsrh81@gmail.com",
+      "password": "123456",
+      "id": 5
     }
   ]
 }
