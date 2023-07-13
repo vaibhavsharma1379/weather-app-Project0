@@ -1,48 +1,50 @@
 
  <div ng-controller="currentwther">
-    <div  ng-include="'header.html'"></div>
+    <div  ng-include="'header.html'"ng-model="myVar" ng-init="myVar = true"></div>
 <div>
-        <div class="curr-weather" ng-style="currback" >
-            <div>
-                <h4>{{name}}, {{region}}, {{country}}</h4>
-                <p class="" style="font-size: 50px; margin: 20px;">{{temp_c}}°C</p>
-                <p>{{date | date:'medium'}}</p>
-                <p class="">Feels Like: <strong>{{feelslike_c}}°C</strong></p>
-                <h5 style="font-size: 20px;">{{text}}</h5>
-            </div>
-            <div class="wtr-con">
-                <img style="height: 100px;" ng-src="{{img}}" />
-            </div>
-
+<div>
+    <div class="curr-weather" ng-style="currback" >
+        <div>
+            <h4>{{name}}, {{region}}, {{country}}</h4>
+            <p class="" style="font-size: 50px; margin: 20px;">{{temp_c}}°C</p>
+            <p>{{date | date:'medium'}}</p>
+            <p class="">Feels Like: <strong>{{feelslike_c}}°C</strong></p>
+            <h5 style="font-size: 20px;">{{text}}</h5>
+        </div>
+        <div class="wtr-con">
+            <img style="height: 100px;" ng-src="{{img}}" />
         </div>
 
     </div>
-   
 
-    <div style="background: linear-gradient(120deg, rgb(179, 0, 255), rgba(244, 47, 185, 0.329)); ">
-        <div style="height: 50px;"></div>
-        <div  ng-controller="hourlyWeather" class="hr-weather">
-            <div  class="container" id="container">
-                <div class="hr-wtr" ng-repeat="hourlydata in hourlyWeatherData">
-                    <p ><strong>{{hourlydata.temp_c}}°C</strong></p>
-                    <img style="width: 60px; margin-top: 15px;" ng-src="{{hourlydata.condition.icon}}" />
-                    <p style="margin-top: 30px; width: 80px;"><strong>{{hourlydata.time.split(" ")[1]}}</strong></p>
-    
-                </div>
+</div>
+
+
+<div style="background: linear-gradient(120deg, rgb(179, 0, 255), rgba(244, 47, 185, 0.329)); ">
+    <div style="height: 50px;"></div>
+    <div  ng-controller="hourlyWeather" class="hr-weather">
+        <div  class="container" id="container">
+            <div class="hr-wtr" ng-repeat="hourlydata in hourlyWeatherData">
+                <p ><strong>{{hourlydata.temp_c}}°C</strong></p>
+                <img style="width: 60px; margin-top: 15px;" ng-src="{{hourlydata.condition.icon}}" />
+                <p style="margin-top: 30px; width: 80px;"><strong>{{hourlydata.time.split(" ")[1]}}</strong></p>
+
             </div>
-    
         </div>
-        <br>
-        <div ng-controller="daillyweather" class="hr-weather">
-            <div  class="container" id="container">
-                <div  class="hr-wtr" ng-repeat="dailydata in daiilyData">
-                    <p><strong>{{dailydata[0].avgtemp_c}}°C</strong></p>
-                    <img style="width: 60px; margin-top: 15px;" ng-src="{{dailydata[0].condition.icon}}" />
-                    <p style="margin-top: 30px; width: 80px;"><strong>{{dailydata[1]}}</strong></p>
-                </div>
+
+    </div>
+    <br>
+    <div ng-controller="daillyweather" class="hr-weather">
+        <div  class="container" id="container">
+            <div  class="hr-wtr" ng-repeat="dailydata in daiilyData">
+                <p><strong>{{dailydata[0].avgtemp_c}}°C</strong></p>
+                <img style="width: 60px; margin-top: 15px;" ng-src="{{dailydata[0].condition.icon}}" />
+                <p style="margin-top: 30px; width: 80px;"><strong>{{dailydata[1]}}</strong></p>
             </div>
         </div>
     </div>
+</div>
+</div>
 
     <div  ng-include="'footer.html'"></div>
 

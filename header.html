@@ -5,7 +5,7 @@
 </style>
 <nav  class="navbar navbar-expand-lg bg-body-tertiary"">
     <div class="container-fluid" >
-      <a class="navbar-brand" href="#/dashboard" ng-click="searchWeather()">OpenWeather</a>
+      <a class="navbar-brand" href="#/dashboard" ng-click="searchWeather()">OneWeather</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -25,11 +25,12 @@
             <a class="nav-link"  ng-href="#/facts">Unique Facts</a>
           </li>
         </ul>
-        <form class="d-flex" role="search" >
+        <form class="d-flex" role="search" ng-if="myVar">
           <input class="form-control me-2" type="search" placeholder="Search Weather by City Name" aria-label="Search" ng-model="cityName">
           
-          <button class="btn btn-outline-success" type="submit" ng-click="searchWeather(cityName)">Search</button>
+          <button style="max-height: 40px;" class="btn btn-outline-success" type="submit" ng-click="searchWeather(cityName)">Search</button>
         </form>
+        <a style="margin: 20px;"  ng-href="#/login">Log Out</a>
       </div>
     </div>
   </nav>

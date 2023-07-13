@@ -43,6 +43,12 @@
       "email": "vaibhavsrh81@gmail.com",
       "password": "123456",
       "id": 5
+    },
+    {
+      "name": "Vaibhav",
+      "email": "vaibhavsrh76@gmail.com",
+      "password": "12345",
+      "id": 6
     }
   ]
 }

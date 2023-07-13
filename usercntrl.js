@@ -1,10 +1,11 @@
 var app = angular.module("app", ['ngRoute']);
 app.config(function ($routeProvider) {
     $routeProvider.when("/", {
-        templateUrl: "login.html"
+        templateUrl: "login.html",
+
     }).when("/dashboard", {
         templateUrl: "dashboard.html",
-        controller:"currentwther"
+        controller: "currentwther"
     }).when("/ragister", {
         templateUrl: "ragister.html"
     }).when("/facts", {
@@ -30,23 +31,18 @@ app.controller("loginctrl", ["$scope", "$location", "loginService", function (p,
         p.isShow = false;
 
     }
-    // p.print=function(){
-    // //    p.userarr.push(user);
-    // var user = {
-    //     email: p.loginemail,
-    //     password: p.loginpassword
-    // }
-    //    console.log(user);
-    // }
+
 
     p.login = function () {
         loginService.loginUser(
             function (usersdata) {
                 p.userarr = usersdata;
+
                 let flag = false;
                 for (user of p.userarr) {
                     if (user.email === p.loginemail && user.password === p.loginpassword) {
                         p.loginsuccess = true;
+
                         console.log("loginsucess")
                         flag = true;
                         p.redirect();
@@ -112,7 +108,7 @@ app.controller("rgtrCtrl", ["$scope", "$location", "rgtrService", function (p, $
 
 }])
 
-app.controller("currentwther", ["$scope", "$interval","$injector", "currentweatherservice", function (p, $interval, injector,currentweatherservice) {
+app.controller("currentwther", ["$scope", "$interval", "$injector", "currentweatherservice", function (p, $interval, injector, currentweatherservice) {
     p.name;
     p.region;
     p.country;
@@ -124,7 +120,7 @@ app.controller("currentwther", ["$scope", "$interval","$injector", "currentweath
     p.is_day;
     p.imglink;
     p.date = new Date();
-    
+
 
 
 
@@ -175,21 +171,17 @@ app.controller("currentwther", ["$scope", "$interval","$injector", "currentweath
     p.searchWeather(null);
     $interval(function () {
         p.date = new Date();
-        
+
     }, 1000);
     $interval(function () {
         p.searchWeather(null);
-        
-    }, 100000);
 
-    // p.myfunction2=function(cityname){
-    //     var asrtronomycntrlr=injector.get('astronomy');
-    //     var astrofunc=asrtronomycntrlr.wea(cityname);
-    //     astrofunc(cityname);
-    // }
+    }, 60000);
+
+
 }])
 
-app.controller("hourlyWeather", ["$scope", "$interval", "currentweatherservice", function (p, $interval ,currentweatherservice) {
+app.controller("hourlyWeather", ["$scope", "$interval", "currentweatherservice", function (p, $interval, currentweatherservice) {
     p.hourlyWeatherData = [];
     p.icon;
     currentweatherservice.currentWthr("/forecast.json", null, null, function (res) {
@@ -233,93 +225,93 @@ app.controller("daillyweather", ["$scope", "currentweatherservice", function (p,
 
 }])
 
-app.controller("astronomy",["$scope","$interval","currentweatherservice",function(s,$interval,currentweatherservice){
+app.controller("astronomy", ["$scope", "$interval", "currentweatherservice", function (s, $interval, currentweatherservice) {
     s.astronomyarr;
     s.backgroungimg;
     s.moonphase;
     s.myImage;
     s.cityName;
-    s.wea=function(cityname){
-    currentweatherservice.currentWthr("/astronomy.json",cityname,null,function(res){
-        s.astronomyarr=res;
-        
-        if(s.astronomyarr.astronomy.astro.is_moon_up==0){
-            s.backgroungimg={
-                "background-image": 'url("./64x64/astronomy/day.jpg")',
+    s.wea = function (cityname) {
+        currentweatherservice.currentWthr("/astronomy.json", cityname, null, function (res) {
+            s.astronomyarr = res;
+
+            if (s.astronomyarr.astronomy.astro.is_moon_up == 1) {
+                s.backgroungimg = {
+                    "background-image": 'url("./64x64/astronomy/day.jpg")',
+                }
+                s.textcolor = {
+                    "color": "black"
+                }
+
             }
-            s.textcolor={
-                "color":"black"
+            else if (s.astronomyarr.astronomy.astro.is_moon_up == 0) {
+                s.backgroungimg = {
+                    "background-image": 'url("./64x64/astronomy/night.jpg")',
+
+                }
+                s.textcolor = {
+                    "color": "white"
+                }
+
             }
-            
-        }
-        else if(s.astronomyarr.astronomy.astro.is_moon_up==1){
-            s.backgroungimg={
-                "background-image": 'url("./64x64/astronomy/night.jpg")',
-                
-            }
-            s.textcolor={
-                "color":"white"
+            if (s.astronomyarr.astronomy.astro.moon_phase === 'New Moon') {
+                s.myImage = './64x64/astronomy/new-moon.jpg';
+            } else if (s.astronomyarr.astronomy.astro.moon_phase === 'Waxing Crescent') {
+                s.myImage = './64x64/astronomy/waxing-crescent-moon.jpg';
+            } else if (s.astronomyarr.astronomy.astro.moon_phase === 'First Quarter') {
+                s.myImage = './64x64/astronomy/first-quarter-moon.jpg';
+            } else if (s.astronomyarr.astronomy.astro.moon_phase === 'Waxing Gibbous') {
+                s.myImage = './64x64/astronomy/waxing-gibbous-moon.jpg';
+            } else if (s.astronomyarr.astronomy.astro.moon_phase === 'Full Moon') {
+                s.myImage = './64x64/astronomy/full-moon.jpg';
+            } else if (s.astronomyarr.astronomy.astro.moon_phase === 'Waning Gibbous') {
+                s.myImage = './64x64/astronomy/waning-gibbous-moon.jpg';
+            } else if (s.astronomyarr.astronomy.astro.moon_phase === 'Last Quarter') {
+                s.myImage = './64x64/astronomy/thisrd-quarter-moon.jpg';
+            } else if (s.astronomyarr.astronomy.astro.moon_phase === 'Waning Crescent') {
+                s.myImage = './64x64/astronomy/waning-gibbous-moon.jpg';
             }
 
-        }
-        if (s.astronomyarr.astronomy.astro.moon_phase === 'New Moon') {
-            s.myImage = './64x64/astronomy/new-moon.jpg';
-        } else if (s.astronomyarr.astronomy.astro.moon_phase === 'Waxing Crescent') {
-            s.myImage = './64x64/astronomy/waxing-crescent-moon.jpg';
-        } else if (s.astronomyarr.astronomy.astro.moon_phase === 'First Quarter') {
-            s.myImage = './64x64/astronomy/first-quarter-moon.jpg';
-        } else if (s.astronomyarr.astronomy.astro.moon_phase === 'Waxing Gibbous') {
-            s.myImage = './64x64/astronomy/waxing-gibbous-moon.jpg';
-        } else if (s.astronomyarr.astronomy.astro.moon_phase=== 'Full Moon') {
-           s.myImage = './64x64/astronomy/full-moon.jpg';
-        } else if (s.astronomyarr.astronomy.astro.moon_phase === 'Waning Gibbous') {
-           s.myImage = './64x64/astronomy/waning-gibbous-moon.jpg';
-        } else if (s.astronomyarr.astronomy.astro.moon_phase === 'Last Quarter') {
-            s.myImage = './64x64/astronomy/thisrd-quarter-moon.jpg';
-        } else if (s.astronomyarr.astronomy.astro.moon_phase === 'Waning Crescent') {
-            s.myImage = './64x64/astronomy/waning-gibbous-moon.jpg';
-        }
 
 
+            console.log("erer");
+        })
+    }
+    s.wea(null);
+    $interval(function () {
+        s.wea(null);
 
-        console.log("erer");
-    })
-   }
-   s.wea(null);
-    // $interval(function () {
-    //     wea();
-        
-    // }, 12000);
+    }, 60000);
 }])
 
-app.controller("sportscntrl",["$scope","currentweatherservice",function(s,currentweatherservice){
+app.controller("sportscntrl", ["$scope", "currentweatherservice", function (s, currentweatherservice) {
     s.football;
     s.cricket;
     s.golf;
     s.matchs;
-    currentweatherservice.currentWthr("/sports.json",null,null,function(res){
-        s.football=res.football
-        s.cricket=res.cricket;
-        s.golf=res.golf;
-        s.matchs={
-            football:s.football,
-            cricket:s.cricket,
-            golf:s.golf
+    currentweatherservice.currentWthr("/sports.json", null, null, function (res) {
+        s.football = res.football
+        s.cricket = res.cricket;
+        s.golf = res.golf;
+        s.matchs = {
+            football: s.football,
+            cricket: s.cricket,
+            golf: s.golf
         }
         console.log(s.matchs);
-        
+
     })
-    
-   
+
+
 }])
 
 
 
-app.controller("factscntrlr",["$scope","currentweatherservice", function(s,currentweatherservice){
+app.controller("factscntrlr", ["$scope", "currentweatherservice", function (s, currentweatherservice) {
     s.factslist;
-    currentweatherservice.uniqueFacts(function(res){
+    currentweatherservice.uniqueFacts(function (res) {
         // console.log(res[0].fact)
-        s.factslist=res;
+        s.factslist = res;
     })
 }])
 

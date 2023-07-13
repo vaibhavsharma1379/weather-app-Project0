@@ -6,7 +6,7 @@ app.service("loginService",["$http",function(h){
         }).then(function(response){
             ulogin(response.data);
         },function(e){
-            console.log(e)
+            console.log(e.data.error.message)
         })
     }
 }])
@@ -20,7 +20,7 @@ app.service("rgtrService",["$http",function(h){
                 checkUser(res.data);
         },function(e){
             console.log(e);
-            alert(e);
+            alert(e.data.error.message);
         })
     }
     this.ragisterUser=function(user){
@@ -33,6 +33,7 @@ app.service("rgtrService",["$http",function(h){
             console.log(response);
             alert(`${response.data.email} is Ragistered`);
         },function(e){
+            alert(e.data.error.message)
             console.log(e);
         })
     }
@@ -54,6 +55,7 @@ app.service("currentweatherservice", ["$http", function (h) {
     }).then(function(res) {
       cb(res.data);
     }, function(e) {
+        alert(e.data.error.message)
       console.log(e);
     });
   }
@@ -72,6 +74,7 @@ app.service("currentweatherservice", ["$http", function (h) {
                 }).then(function (res) {
                     cb(res.data);
                 }, function (e) {
+                    alert(e.data.error.message);
                     console.log(e);
                 })
             });

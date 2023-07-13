@@ -1,53 +1,118 @@
-<footer>
-    <div class="footer-container">
-      <div class="footer-logo">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNovmJu9C6F4_rAUvJ_0oJGY3DjpinBqAL5bkncInB5UnU41IC&s" alt="Weather App Logo">
-      </div>
-      <div class="footer-links">
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-        <a href="#">Privacy Policy</a>
-      </div>
-      <div class="footer-social">
-        <a href=""><i class="fab fa-facebook-f"></i></a>
-        <a href=""><i class="fab fa-twitter"></i></a>
-        <a href=""><i class="fab fa-instagram"></i></a>
-      </div>
+
+<style>
+  
+/* Add some basic styling for the footer */
+.footer {
+  /* position: fixed; */
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  /* margin-top: 50px; */
+}
+@media screen and (max-width: 850px) {
+  .footer-container {
+    flex-wrap: wrap;
+  }
+  .footer-column {
+    flex: 1 0 50%;
+  }
+  .footer-column:nth-child(3), .footer-column:nth-child(4) {
+    order: -1;
+  }
+}
+@media screen and (min-width: 850px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Use flexbox to create columns for each section */
+.footer-container {
+  display: flex;
+  grid-template-columns: repeat(2,1fr);
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+/* Add some margin and padding for each column */
+.footer-column {
+  margin: 10px;
+  padding: 10px;
+}
+
+/* Add some styling for the links */
+.footer-link {
+  color: white;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+.footer-link:hover {
+  color: yellow;
+}
+</style>
+
+
+
+<!-- Define the footer element -->
+<footer class="footer">
+  
+  <!-- Create a container for the columns -->
+  <div class="footer-container">
+    
+    <!-- Create a column for the about section -->
+    <div class="footer-column">
+      <h3>About</h3>
+      <p>One Weather is a web application that provides weather, astronomy, and sports news information based on your location or the city name you enter. Our goal is to provide accurate and up-to-date information to our users in an easy-to-use and visually appealing format.</p>
     </div>
-  </footer>
+    
+    <!-- Create a column for the what we do section -->
+    <div class="footer-column">
+      <h3>What we do</h3>
+      <p>One Weather uses Angular JS, HTML, and CSS for front-end development, and JSON Server for the back-end database. We also use OpenWeather API, Ninja API, and Astronomy API to fetch data from different sources. Our features include a login and register page, current and hourly weather, daily weather with sorting options, an astronomy view with sunrise/sunset times and moon phases, sports news for football, cricket, and golf, and unique facts cards with 10 random facts that change every time you refresh the website. We strive to provide a seamless user experience with a navigation bar and footer for easy access to all our features. 😊</p>
+    </div>
+    
+    <!-- Create a column for the contact us section -->
+    <div class="footer-column">
+      <h3>Contact us</h3>
+      <p><a class="footer-link" href="mailto:vaibhavsrh78@gmail.com">vaibhavsrh78@gmail.com</a></p>
+      <p><a class="footer-link" href="tel:+91-7668869669">+91-7668869669</a></p>
+      <p><a class="footer-link" href="https://www.google.com/maps?q=28.4886595,77.5239075">Delta 2, Greater Noida</a></p>
+    </div>
+    
+    <!-- Create a column for the links for my website section -->
+    <div class="footer-column">
+      <h3>Links for my website</h3>
+      <ul>
+        <li><a class="footer-link" href="#/dashboard">Home</a></li>
+        <li><a class="footer-link" href="#/astronomy">Astronomy</a></li>
+        <li><a class="footer-link" href="#/sports">Sports</a></li>
+        <li><a class="footer-link" href="#/facts">Facts</a></li>
+        <!-- <li><a class="footer-link" href="https://vaibhav-srh-1379.netlify.app/">My Blog</a></li> -->
+        <!-- <li><a class="footer-link" href="https://your.website.com/contact">Contact</a></li> -->
+      </ul>
+    </div>
+
+    <!-- Create a column for the follow us section -->
+    <div class="footer-column">
+      <h3>Follow us</h3>
+      <!-- Add some icons for social media platforms -->
+      <a class="footer-link " href="https://www.facebook.com/profile.php?id=100034631649716" target="_blank"><img style="max-width: 20px;" src="./64x64/New folder/facebook.png" alt="Facebook"></a>
+      <a class="footer-link" href="https://vaibhav-srh-1379.netlify.app/" target="_blank"><img style="max-width: 20px;" src="./64x64/New folder/portfolio.png" alt="Portfolio"></a>
+      <a class="footer-link" href="https://www.instagram.com/vaibhav___1379/" target="_blank"><img style="max-width: 20px;" src="./64x64/New folder/instagram.png" alt="Instagram"></a>
+      <a class="footer-link" href="https://www.linkedin.com/in/vaibhav-49abb4190/" target="_blank"><img style="max-width: 20px;" src="./64x64/New folder/linkedin.png" alt="LinkedIn"></a>
+    </div>
+
+  </div>
   
-  <style>
-    footer {
-      background-color: #333;
-      color: #fff;
-      padding: 20px 0;
-    }
-    .footer-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .footer-logo img {
-      height: 40px;
-    }
-    .footer-links a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-    .footer-links a:hover {
-      color: #ddd;
-    }
-    .footer-social a {
-      color: #fff;
-      font-size: 24px;
-      margin: 0 10px;
-    }
-    .footer-social a:hover {
-      color: #ddd;
-    }
-  </style>
-  
+  <!-- Add a bottom line with some text -->
+  <p>© All rights reserved. Love from Vaibhav ❤️.</p>
+
+</footer>
+
+
